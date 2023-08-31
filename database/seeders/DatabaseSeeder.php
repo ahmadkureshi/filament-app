@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Student;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +16,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory()->create([
+            "name" => "Admin",
+            "email" => "admin@test.com",
+            "password" => bcrypt("12345678"),
+        ]);
+
+        Student::factory(10)->create();
     }
 }
