@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Student::factory(10)->create();
+        $this->call(StandardSeeder::class);
     }
 }
