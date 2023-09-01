@@ -18,7 +18,7 @@ class StandardPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class StandardPolicy
      */
     public function view(User $user, Standard $standard)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class StandardPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class StandardPolicy
      */
     public function update(User $user, Standard $standard)
     {
-        //
+        return true;
     }
 
     /**
@@ -65,7 +65,7 @@ class StandardPolicy
      */
     public function delete(User $user, Standard $standard)
     {
-        //
+        return true;
     }
 
     /**
@@ -77,7 +77,7 @@ class StandardPolicy
      */
     public function restore(User $user, Standard $standard)
     {
-        //
+        return true;
     }
 
     /**
@@ -89,6 +89,6 @@ class StandardPolicy
      */
     public function forceDelete(User $user, Standard $standard)
     {
-        //
+        return true;
     }
 }

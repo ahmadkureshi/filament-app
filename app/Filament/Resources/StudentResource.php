@@ -32,6 +32,9 @@ class StudentResource extends Resource
                     ->minLength(8),
                 Forms\Components\TextInput::make('address_1'),
                 Forms\Components\TextInput::make('address_2'),
+                Forms\Components\Select::make('standard_id')
+                    ->required()
+                    ->relationship('standard', 'name'),
             ]);
     }
 
@@ -39,10 +42,20 @@ class StudentResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')->searchable(),
+                Tables\Columns\TextColumn::make('standard.name')->searchable(),
             ])
             ->filters([
-                //
+                Tables\Filters\Filter::make('start')
+                    ->query(fn (Builder $query): Builder => $query->where('standard_id','1')),
+                Tables\Filters\SelectFilter::make('standard_id')
+                    ->options([
+                        1 => 'Standard 1',
+                        3 => 'Standard 3',
+                        7 => 'Standard 7',
+                    ])->label('Select the standard'),
+                Tables\Filters\SelectFilter::make('All Standards')
+                    ->relationship('standard', 'name')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
