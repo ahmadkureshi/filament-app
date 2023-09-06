@@ -54,18 +54,39 @@ class StudentResource extends Resource
                         ])->icon('heroicon-o-academic-cap')->description('Select your standard'),
                 ])->skippable(),*/
 
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->minLength(5)
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('student_id')
-                    ->required()
-                    ->minLength(8),
-                Forms\Components\TextInput::make('address_1'),
-                Forms\Components\TextInput::make('address_2'),
-                Forms\Components\Select::make('standard_id')
-                    ->required()
-                    ->relationship('standard', 'name'),
+                Forms\Components\Section::make('Personal Info')
+                    ->description('Add student personal information')
+                    ->collapsible()
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->minLength(5)
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('student_id')
+                            ->required()
+                            ->minLength(8),
+                        Forms\Components\TextInput::make('address_1'),
+                        Forms\Components\TextInput::make('address_2'),
+                        Forms\Components\Select::make('standard_id')
+                            ->required()
+                            ->relationship('standard', 'name'),
+                    ])
+                ,
+                Forms\Components\Section::make('Medical Info')
+                    ->description('Add student medical information')
+                    ->collapsible()
+                    ->collapsed()
+                    ->schema([
+                        Forms\Components\Repeater::make('vitals')
+                            ->schema([
+                                Forms\Components\Select::make('name')
+                                    ->options(config('sm_config.vitals'))
+                                    ->required(),
+                                Forms\Components\TextInput::make('value')
+                                    ->required()
+                                    ->maxLength(255),
+                            ])->columns(2)
+                    ])
             ]);
     }
 
