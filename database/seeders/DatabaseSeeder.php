@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Certificate;
 use App\Models\Guardian;
 use App\Models\Student;
 use App\Models\User;
@@ -21,6 +22,21 @@ class DatabaseSeeder extends Seeder
             "name" => "Admin",
             "email" => "admin@test.com",
             "password" => bcrypt("12345678"),
+        ]);
+
+        Certificate::create([
+            "name" => "Drawing Certificate",
+            "description" => "Awarded for drawing",
+        ]);
+
+        Certificate::create([
+            "name" => "Singing Certificate",
+            "description" => "Awarded for singing",
+        ]);
+
+        Certificate::create([
+            "name" => "Quiz Certificate",
+            "description" => "Awarded for passing quiz",
         ]);
 
         Student::factory(10)
