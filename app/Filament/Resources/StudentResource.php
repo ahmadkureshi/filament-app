@@ -28,6 +28,32 @@ class StudentResource extends Resource
     {
         return $form
             ->schema([
+
+                // for making a wizard for big forms example for below form but commenting its fine for small form the below wizard code
+/*                Forms\Components\Wizard::make([
+                   Forms\Components\Wizard\Step::make('Personal Information')
+                        ->schema([
+                            Forms\Components\TextInput::make('name')
+                                ->required()
+                                ->minLength(5)
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('student_id')
+                                ->required()
+                                ->minLength(8),
+                        ])->icon('heroicon-o-users')->description('Enter your personal information'),
+                    Forms\Components\Wizard\Step::make('Address')
+                        ->schema([
+                            Forms\Components\TextInput::make('address_1'),
+                            Forms\Components\TextInput::make('address_2'),
+                        ])->icon('heroicon-o-home')->description('Enter your address'),
+                    Forms\Components\Wizard\Step::make('School')
+                        ->schema([
+                            Forms\Components\Select::make('standard_id')
+                                ->required()
+                                ->relationship('standard', 'name'),
+                        ])->icon('heroicon-o-academic-cap')->description('Select your standard'),
+                ])->skippable(),*/
+
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->minLength(5)
